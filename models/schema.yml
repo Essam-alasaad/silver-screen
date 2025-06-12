@@ -1,0 +1,43 @@
+version: 2
+
+sources:
+  - name: silver_screen #name of the source we will reference in the models
+    database: silver_screen #name of database as can be found on snowflake
+    schema: public
+    tables: #name of tables we're referencing in the models as can be found on snowflake
+      - name: movie_catalogue
+      - name: invoices
+      - name: nj_001
+      - name: nj_002
+      - name: nj_003
+models:
+  - name: stg_movie_catalogue
+    columns:
+      - name: movie_id
+        tests:
+          - unique
+          - not_null
+      - name: movie_title
+        tests:
+          - not_null
+      - name: genre
+        tests:
+          - not_null
+      - name: studio
+        tests:
+          - not_null
+  - name: stg_invoices
+    columns:
+      - name: month
+        tests:
+        - not_null
+      - name: location_id
+        tests:
+          - not_null
+  - name: locations_monthly_sales
+    columns:
+      - name: movie_id
+        tests:
+          - not_null
+          
+          
