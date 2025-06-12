@@ -12,6 +12,7 @@ sources:
       - name: nj_003
 models:
   - name: stg_movie_catalogue
+    description: This model selects the needed columns from movie_catalogue and cleans the data to insure we have them unique and not_null where needed.
     columns:
       - name: movie_id
         tests:
@@ -27,6 +28,7 @@ models:
         tests:
           - not_null
   - name: stg_invoices
+    description: This model selects the needed columns from invoices and cleans the data to insure we have them unique and not_null where needed.
     columns:
       - name: month
         tests:
@@ -35,8 +37,39 @@ models:
         tests:
           - not_null
   - name: locations_monthly_sales
+    description: This model combines all the transaction data from all three different locations and aggregates the needed data
     columns:
       - name: movie_id
+        tests:
+          - not_null
+  - name: mart_movie_monthly_performance
+    description: This model joins the table with all the transactions and the table with the full movie info in order to have a full overview of the movies performance across locations
+    columns:
+      - name: movie_id
+        tests:
+          - not_null
+      - name: month
+        tests:
+          - not_null
+      - name: movie_title
+        tests:
+          - not_null
+      - name: genre
+        tests:
+          - not_null
+      - name: studio
+        tests:
+          - not_null
+      - name: location
+        tests:
+          - not_null
+      - name: rental_cost
+        tests:
+          - not_null
+      - name: ticket_sold
+        tests:
+          - not_null
+      - name: revenue
         tests:
           - not_null
           
