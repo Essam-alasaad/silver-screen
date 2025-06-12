@@ -18,5 +18,4 @@ FROM {{ ref('movie_details') }} m
 JOIN {{ ref('locations_monthly_sales') }} l 
   ON m.location_id = l.location_id
  AND m.movie_id = l.movie_id
- AND EXTRACT(MONTH FROM m.month) = l.month
-
+ AND  m.month = l.month

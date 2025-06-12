@@ -6,7 +6,7 @@
 
 select
     details AS movie_id,
-    EXTRACT(month from timestamp) AS month,
+    date_trunc(month , timestamp) AS month,
     'NJ_003' AS location_id,
     SUM(amount) AS total_tickets,
     SUM(total_value) AS revenue

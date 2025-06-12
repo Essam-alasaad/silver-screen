@@ -1,13 +1,13 @@
 {{
     config(
-        materialized='table'
+        materialized='view'
     )
 }}
 
 
 SELECT
     movie_id,
-    month ,
+    month,
     location_id,
     SUM(total_invoice_sum) AS rental_cost
 FROM {{ source('silver_screen', 'invoices') }}
